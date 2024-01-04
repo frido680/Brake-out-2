@@ -1,3 +1,6 @@
+<?php
+    session_start()
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,6 @@
 <body>
     <div class="bg-image"></div>
     <div class="container">
-        
         <div class="row justify-content-center text-center ">
             <div class="col-12"><img id="logo" src="logo.png" alt=""></div>
         </div>
@@ -23,10 +25,11 @@
             <div class="col-12">
                 <button class="btn btn-warning" onclick="resetGame()">Reset Game</button>
                 <button class="btn btn-warning" onclick="start()">Start</button>
+                <button class="btn btn-warning" onclick="location.href='main.php'">Vissza</button>
             </div>
         </div>
     </div>
-
+    <div class="d-none" id="userid"><?php echo $_SESSION["id"] ?></div>
     <script src="script.js"></script>
 </body>
 </html>

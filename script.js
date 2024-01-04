@@ -3,11 +3,18 @@ let ctx = canvas.getContext('2d');
 let ballRadius = 9;
 let x = canvas.width / (Math.floor(Math.random() * Math.random() * 10) + 3);
 let y = canvas.height - 40;
-let dx = 1;
-let dy = -1;
+let dx = 5;
+let dy = -5;
 
 let paddleHeight = 15;
 let paddleWidth = 72;
+
+function setScore(score){
+    var user = document.getElementById("userid").innerHTML;
+    fetch("setScore.php?p=" + user + ";" + score, {
+        method: "POST",
+      });
+}
 
 function drawPaddle() 
 {
@@ -85,6 +92,7 @@ function hitDetection() {
                     score++;
 
                     if (score === rowCount*columnCount) {
+                        setScore(score);
                         alert("Nyertél!");
                         document.location.reload();
                     }
@@ -125,6 +133,7 @@ function init() { //inicializálás
             dy = -dy;
         } else {
             //kiesik
+            setScore(score);
             alert("Vége! "+ score + " pontod lett!");
             document.location.reload();
         }
